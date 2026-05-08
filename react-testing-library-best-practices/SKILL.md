@@ -9,6 +9,8 @@ Distilled from Kent C. Dodds — [Common Mistakes with React Testing Library](ht
 
 Use this skill whenever writing, reviewing, or refactoring tests that use `@testing-library/react`. The goal of every rule below is the same: **tests should resemble how users use the software**.
 
+> **Note on Rule #1 (ESLint plugins):** This is the only rule that's a *tooling choice* rather than a *test-writing pattern*. It's optional and project-dependent — see the rule for when to apply it.
+
 ## Quick Reference (Decision Table)
 
 | Situation | Use |
@@ -23,9 +25,16 @@ Use this skill whenever writing, reviewing, or refactoring tests that use `@test
 
 ## The 15 Mistakes
 
-### 1. Not using the Testing Library ESLint plugins
+### 1. Not using the Testing Library ESLint plugins *(optional — project tooling choice)*
 
-Install both — they catch most of the issues below automatically:
+> **When to apply this rule:**
+> - ✅ The project's `package.json` already lists `eslint-plugin-testing-library` and/or `eslint-plugin-jest-dom` — lean on them and follow their guidance.
+> - ✅ The user is explicitly asking about test tooling, lint setup, or DX improvements.
+> - ❌ Otherwise, **do not push adoption.** Whether to install these plugins is a project-level decision (some codebases have deliberately opted out). Don't surface it during normal test writing or review.
+>
+> The remaining rules (#2–#15) are universally applicable and don't depend on this tooling.
+
+If the project does want them:
 
 ```sh
 yarn add -D eslint-plugin-testing-library eslint-plugin-jest-dom
