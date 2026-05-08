@@ -1,46 +1,55 @@
-# claude-skill-react-testing-library
+# claude-skills
 
-A [Claude Code skill](https://docs.claude.com/en/docs/claude-code/skills) capturing best practices and common mistakes for **React Testing Library** tests, distilled from Kent C. Dodds' [*Common Mistakes with React Testing Library*](https://kentcdodds.com/blog/common-mistakes-with-react-testing-library).
+A personal collection of reusable [Claude Code skills](https://docs.claude.com/en/docs/claude-code/skills). Each top-level directory is one skill; install the ones you want as symlinks into `~/.claude/skills/` so they load globally across every project.
 
-When loaded, Claude will apply these patterns when writing, reviewing, or debugging RTL tests.
+## Skills
 
-## What it covers
-
-- Query priority (`*ByRole` first, test IDs last)
-- `getBy*` vs `queryBy*` vs `findBy*` — which to use when
-- `userEvent` vs `fireEvent`
-- `waitFor` patterns (single assertion, no side-effects)
-- jest-dom matchers vs raw DOM property assertions
-- When `act()`, `cleanup()`, and `wrapper` are unnecessary
-- ARIA on native elements
-
-See [`SKILL.md`](./SKILL.md) for the full content.
+| Skill | Description |
+|---|---|
+| [`react-testing-library-best-practices`](./react-testing-library-best-practices) | Common mistakes and best practices for React Testing Library tests (queries, async, `userEvent`, `waitFor`, jest-dom matchers). Source: Kent C. Dodds. |
 
 ## Install
 
-Clone (or symlink) this repo into your user-level skills directory so it's picked up across all projects:
+Clone the repo once, then symlink each skill you want into `~/.claude/skills/`:
 
 ```sh
-git clone https://github.com/samgold2020/claude-skill-react-testing-library.git \
-  ~/.claude/skills/react-testing-library-best-practices
+git clone git@github.com:samgold2020/claude-skills.git ~/code/claude-skills
+
+# Install all skills
+for skill in ~/code/claude-skills/*/; do
+  name=$(basename "$skill")
+  ln -snf "$skill" ~/.claude/skills/"$name"
+done
+
+# Or install just one
+ln -snf ~/code/claude-skills/react-testing-library-best-practices \
+        ~/.claude/skills/react-testing-library-best-practices
 ```
 
-Or as a symlink, if you want to edit the repo in place:
-
-```sh
-git clone https://github.com/samgold2020/claude-skill-react-testing-library.git ~/code/claude-skill-react-testing-library
-ln -s ~/code/claude-skill-react-testing-library ~/.claude/skills/react-testing-library-best-practices
-```
-
-To use it in a single project instead, clone into `<project>/.claude/skills/` with the same target name.
+To use a skill in a single project instead of globally, symlink into `<project>/.claude/skills/` with the same target name.
 
 ## Update
 
 ```sh
-cd ~/.claude/skills/react-testing-library-best-practices  # or wherever you cloned
+cd ~/code/claude-skills
 git pull
 ```
 
+Symlinks point at the working tree, so updates take effect immediately — no re-symlinking needed.
+
+## Adding a new skill
+
+1. Create a new top-level directory named after the skill (e.g. `my-new-skill/`).
+2. Inside it, write `SKILL.md` with frontmatter:
+   ```yaml
+   ---
+   name: my-new-skill
+   description: One sentence on what this skill does and when to use it. The description is what Claude matches against to decide when to load it — be specific.
+   ---
+   ```
+3. Add a row to the **Skills** table above.
+4. Commit and push.
+
 ## License
 
-MIT — see content adapted from Kent C. Dodds' blog post (linked above) for the original source.
+MIT — see [LICENSE](./LICENSE). Individual skill content may credit external sources (linked from the skill's own `SKILL.md`).
