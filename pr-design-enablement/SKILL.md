@@ -45,6 +45,8 @@ The summary should also address:
 - What should reviewers focus on?
 - Is there anything uncertain or worth flagging?
 
+Write a narrative, not a changelog. Never produce a bulleted list of files changed — that is what the diff is for.
+
 **Linear** — extract from the branch name or commit messages if present (look for patterns like `APP-1234`, `ENG-567`, a full Linear URL). If not found, leave the placeholder.
 
 **How to Test** — prefer specific Storybook story paths or UI navigation steps. State what the reviewer should expect to see. Do not write "run the test suite."
