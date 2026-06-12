@@ -53,8 +53,6 @@ Write a narrative, not a changelog. Never produce a bulleted list of files chang
 
 **Screenshots & Recordings** — if the diff includes visual/UI changes, note that screenshots or `.mp4`/`.gif` clips should be added. Leave the Before/After subsections empty for the author to fill in.
 
-**Intentional Visual Changes** — only include this section if the diff contains deliberate visual diffs (spacing, color, radius, layout). If the section has nothing to say, flag it for removal in step 3.
-
 ### 4. Ask about collapsing unused sections
 
 Before finalizing, identify which of the four lower sections are unused for this PR:
@@ -103,11 +101,6 @@ Output the complete PR body using this template structure:
 ### Before
 
 ### After
-
-## Intentional Visual Changes
-
-<!-- Note any expected visual diffs (spacing, color, radius, layout) so reviewers
-     know they're deliberate. Delete this section if not applicable. -->
 
 <details>
 <summary>Feature flags, observability, and rollout — expand if applicable</summary>
@@ -160,5 +153,4 @@ If the user opts in, babysit CI:
 | Linear ID buried in HTML comment | `**Linear:**` visible field at the top |
 | Single-sentence Summary prompt | Sub-question prompts; asks to brainstorm "why" live |
 | `## Before/After screenshots` | `## Screenshots & Recordings` (invites video) |
-| No visual changes section | `## Intentional Visual Changes` |
 | Sections 4–7 always visible | Collapsed in `<details>` by default (ask first) |
