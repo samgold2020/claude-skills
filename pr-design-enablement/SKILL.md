@@ -138,7 +138,18 @@ BODY
 )"
 ```
 
-If no PR exists yet, print the body for the user to review before opening a PR.
+If no PR exists yet, open a draft PR with `gh pr create --draft` using the final body.
+
+### 7. After opening the PR
+
+Report the PR URL and stop. NEVER start watching CI unprompted — the work may still be in progress. Then ask the user: "Would you like me to babysit CI?"
+
+If the user opts in, babysit CI:
+1. Poll `gh pr checks` until RWX and required checks finish.
+2. On failure, use the `fetch-ci-logs` skill to get the failing task's output.
+3. Fix in-scope failures (format errors, broken tests from your wiring changes, snapshot updates) and push; repeat until green or blocked by something outside your control.
+4. Do not treat "CI is running" as done. Report blocked failures to the user with context on why you're stuck.
+5. Report: PR URL, what failed (if anything), what you fixed, and current CI status.
 
 ## Key differences from the base template
 
