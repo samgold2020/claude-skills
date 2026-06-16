@@ -49,7 +49,7 @@ Write a narrative, not a changelog. Never produce a bulleted list of files chang
 
 **Linear** — extract from the branch name or commit messages if present (look for patterns like `APP-1234`, `ENG-567`, a full Linear URL). If not found, leave the placeholder.
 
-**How to Test** — prefer specific Storybook story paths or UI navigation steps. State what the reviewer should expect to see. Do not write "run the test suite."
+**How to Test** — prefer specific Storybook story paths or UI navigation steps. State what the reviewer should expect to see. Do not write "run the test suite." When the testing steps have a meaningful sequence or involve multiple discrete actions, break them into a numbered list. Use a numbered list any time a reviewer would need to follow the steps in order to reproduce or verify the change.
 
 **Screenshots & Recordings** — if the diff includes visual/UI changes, note that screenshots or `.mp4`/`.gif` clips should be added. Leave the Before/After subsections empty for the author to fill in.
 
@@ -91,7 +91,9 @@ Output the complete PR body using this template structure:
 ## How to Test
 
 <!-- Step-by-step test plan. Reference specific Storybook story names, UI paths,
-     or commands. State what the reviewer should expect to see. -->
+     or commands. State what the reviewer should expect to see.
+     Use a numbered list when steps have a meaningful sequence or involve
+     multiple discrete actions a reviewer needs to follow in order. -->
 
 ## Screenshots & Recordings
 
@@ -105,7 +107,7 @@ Output the complete PR body using this template structure:
 <details>
 <summary>Feature flags, observability, and rollout — expand if applicable</summary>
 
-## Classic vs Environments & Services Teams
+## Classic vs Environments & Environments Teams
 
 ## Feature Flag(s) in Use
 
@@ -119,7 +121,7 @@ Output the complete PR body using this template structure:
 Fill in the sections using the content gathered in step 3:
 - **Summary**: use the narrative from the brainstorm conversation, or your own analysis of the diff — covering what changed and why, what reviewers should focus on, and anything uncertain.
 - **Linear**: extracted ticket ID or URL, or the placeholder if not found.
-- **How to Test**: specific Storybook paths or UI steps with expected outcomes.
+- **How to Test**: specific Storybook paths or UI steps with expected outcomes. Use a numbered list when the steps have a meaningful sequence or involve multiple discrete actions.
 - Keep HTML comments only in sections the author needs to fill themselves (e.g. screenshots/recordings).
 
 ### 6. Apply to the PR
