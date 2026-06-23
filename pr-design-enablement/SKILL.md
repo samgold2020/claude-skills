@@ -64,6 +64,8 @@ The summary should also address:
 
 Write a narrative, not a changelog. Never produce a bulleted list of files changed — the reviewer will read the diff for that. Keep the summary brief: 1–3 sentences covering the high-level "what and why" is the target. Only expand beyond that when something genuinely needs calling out — a non-obvious decision, a subtle behavior change, a known limitation, or something the reviewer might otherwise miss.
 
+When the PR spans multiple Linear tickets, write one unified summary — do not break the summary into per-ticket sections. The reviewer trusts that related tickets belong together; they don't need a ticket-by-ticket breakdown in the summary body. Ticket attribution lives in the Linear field at the top. The summary should answer "what does this PR add or fix?" as a single coherent thought.
+
 **Linear** — extract from the branch name or commit messages if present (look for patterns like `APP-1234`, `ENG-567`, a full Linear URL). If not found, leave the placeholder.
 
 **How to Test** — prefer specific Storybook story paths or UI navigation steps. State what the reviewer should expect to see. Do not write "run the test suite." When the testing steps have a meaningful sequence or involve multiple discrete actions, break them into a numbered list. Use a numbered list any time a reviewer would need to follow the steps in order to reproduce or verify the change.
